@@ -2,6 +2,7 @@ package com.ranian.book.springboot.service.posts;
 
 import com.ranian.book.springboot.domain.posts.Posts;
 import com.ranian.book.springboot.domain.posts.PostsRepository;
+import com.ranian.book.springboot.web.dto.PostsResponseDto;
 import com.ranian.book.springboot.web.dto.PostsSaveRequestDto;
 import com.ranian.book.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,12 @@ public class PostsService {
         posts.update(requestDto.getTitle(), requestDto.getContent());
 
         return id;
+    }
+
+    public PostsResponseDto findById(Long id) {
+        Posts entity = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalAccessError("해당 게시글이 없습니다. id=" + id));
+
+        return new PostsResponseDto(entity);
     }
 }

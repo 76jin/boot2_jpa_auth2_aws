@@ -9,4 +9,26 @@
         </div>
     </div>
 
+    <!-- 목록 영역 -->
+    <table class="table table-horizontal table-bordered">
+        <thred class="thred-strong">
+            <tr>
+                <th>게시글번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>최종수정일</th>
+            </tr>
+        </thred>
+        <tbody id="tbody">
+        {{#posts}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{title}}</td>
+                <td>{{author}}</td>
+                <td>{{modifiedDate}}</td>
+            </tr>
+        {{/posts}}
+        </tbody>
+    </table>
+
 {{> layout/footer }}
